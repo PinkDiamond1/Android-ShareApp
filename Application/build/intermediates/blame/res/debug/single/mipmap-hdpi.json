@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-hdpi/logo_avatar.png",
+        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-hdpi/logo_avatar.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-hdpi/ic_launcher.png",
+        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-hdpi/ic_launcher.png"
+    }
+]
