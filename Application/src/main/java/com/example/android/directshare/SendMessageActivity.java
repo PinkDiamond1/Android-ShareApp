@@ -109,6 +109,7 @@ public class SendMessageActivity extends Activity {
                 claim.put("id", shareContext.getIdentifier());
                 claim.put("url", params[0]);
                 claim.put("text", params[0]);
+                claim.put("type", params[3]);
 
                 signature.put("created", System.currentTimeMillis());
                 signature.put("creator", "OpenShare");
@@ -131,7 +132,7 @@ public class SendMessageActivity extends Activity {
             }
 
             try {
-                post("http://gateway.userfeeds.io/", body.toString());
+                post("http://beta.userfeeds.io/", body.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -167,7 +168,7 @@ public class SendMessageActivity extends Activity {
             return;
         }
         // Bind event handlers.
-        findViewById(R.id.send).setOnClickListener(mOnClickListener);
+        //findViewById(R.id.send).setOnClickListener(mOnClickListener);
         // Set up the UI.
         prepareUi();
         // The contact ID will not be passed on when the user clicks on the app icon rather than any
@@ -233,29 +234,30 @@ public class SendMessageActivity extends Activity {
         startActivityForResult(intent, REQUEST_SELECT_CONTACT);
     }
 
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.send:
-                    send();
-                    break;
-            }
+    public void onSendClick(View view) {
+        switch (view.getId()) {
+            case R.id.thumbsup:
+                send("thumbsup");
+                break;
+            case R.id.thumbsdown:
+                send("thumbsdown");
+                break;
         }
     };
 
     /**
      * Pretends to send the text to the contact. This only shows a dummy message.
      */
-    private void send() {
+    private void send(String type) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         final String profile = prefs.getString("selectedProfile", "error");
+        final String claimType = type;
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 SendClaim sendClaim = new SendClaim();
-                sendClaim.execute(mBody, String.valueOf(mContextId), profile);
+                sendClaim.execute(mBody, String.valueOf(mContextId), profile, claimType);
             }
         });
 

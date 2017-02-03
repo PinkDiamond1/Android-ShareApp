@@ -31,4 +31,6 @@
     <string name="message_sent">Sent a message \"%1$s\" to %2$s.</string>
     <string name="text_to_share">What\'s on your mind?</string>
 
+    <string name="thumbsup">&#x1F44D;</string>
+    <string name="thumbsdown">&#x1F44E;</string>
 </resources>

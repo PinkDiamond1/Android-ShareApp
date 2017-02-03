@@ -632,7 +632,6 @@ int id search_plate 0x7f0b004d
 int id search_src_text 0x7f0b004e
 int id search_voice_btn 0x7f0b0052
 int id select_dialog_listview 0x7f0b0053
-int id send 0x7f0b0071
 int id share 0x7f0b0057
 int id shortcut 0x7f0b003d
 int id showCustom 0x7f0b000f
@@ -650,6 +649,8 @@ int id tabMode 0x7f0b000b
 int id text 0x7f0b006d
 int id text2 0x7f0b006b
 int id textSpacerNoButtons 0x7f0b0037
+int id thumbsdown 0x7f0b0072
+int id thumbsup 0x7f0b0071
 int id time 0x7f0b0063
 int id title 0x7f0b002d
 int id title_template 0x7f0b0032
@@ -771,7 +772,9 @@ int string sending_message 0x7f060029
 int string share 0x7f06002a
 int string status_bar_notification_info_overflow 0x7f060014
 int string text_to_share 0x7f06002b
-int string to 0x7f06002c
+int string thumbsdown 0x7f06002c
+int string thumbsup 0x7f06002d
+int string to 0x7f06002e
 int style AlertDialog_AppCompat 0x7f08009b
 int style AlertDialog_AppCompat_Light 0x7f08009c
 int style Animation_AppCompat_Dialog 0x7f08009d

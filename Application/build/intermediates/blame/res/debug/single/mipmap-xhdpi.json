@@ -4,6 +4,62 @@
         "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/iconomi.png"
     },
     {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ethereumclassic.png",
+        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/ethereumclassic.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/pluton.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/pluton.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/logo_avatar.png",
+        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/logo_avatar.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/golem.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/golem.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/firstblood.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/firstblood.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ethereum.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/ethereum.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/digix.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/digix.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/logo_avatar.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/logo_avatar.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ethereumclassic.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/ethereumclassic.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/hackergold.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/hackergold.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/hackergold.png",
+        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/hackergold.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/singulardtv.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/singulardtv.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/iconomi.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/iconomi.png"
+    },
+    {
         "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/digix.png",
         "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/digix.png"
     },
@@ -12,12 +68,16 @@
         "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/firstblood.png"
     },
     {
-        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ethereumclassic.png",
-        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/ethereumclassic.png"
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/vdice.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/vdice.png"
     },
     {
         "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/pluton.png",
         "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/pluton.png"
+    },
+    {
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/augur.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/augur.png"
     },
     {
         "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
@@ -26,10 +86,6 @@
     {
         "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/ethereum.png",
         "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/ethereum.png"
-    },
-    {
-        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/logo_avatar.png",
-        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/logo_avatar.png"
     },
     {
         "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/singulardtv.png",
@@ -48,8 +104,8 @@
         "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/golem.png"
     },
     {
-        "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/hackergold.png",
-        "source": "/home/grzegorz/Workspace/Android/OpenShare/Application/src/main/res/mipmap-xhdpi/hackergold.png"
+        "merged": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/maker.png",
+        "source": "/home/grzegorz/Workspace/Android/Android-ShareApp/Application/src/main/res/mipmap-xhdpi/maker.png"
     },
     {
         "merged": "/home/grzegorz/Workspace/Android/OpenShare/Application/build/intermediates/res/merged/debug/mipmap-xhdpi/augur.png",

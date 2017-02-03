@@ -2019,7 +2019,6 @@ containing a value of this type.
         public static final int search_src_text=0x7f0b004e;
         public static final int search_voice_btn=0x7f0b0052;
         public static final int select_dialog_listview=0x7f0b0053;
-        public static final int send=0x7f0b0071;
         public static final int share=0x7f0b0057;
         public static final int shortcut=0x7f0b003d;
         public static final int showCustom=0x7f0b000f;
@@ -2037,6 +2036,8 @@ containing a value of this type.
         public static final int text=0x7f0b006d;
         public static final int text2=0x7f0b006b;
         public static final int textSpacerNoButtons=0x7f0b0037;
+        public static final int thumbsdown=0x7f0b0072;
+        public static final int thumbsup=0x7f0b0071;
         public static final int time=0x7f0b0063;
         public static final int title=0x7f0b002d;
         public static final int title_template=0x7f0b0032;
@@ -2166,7 +2167,9 @@ containing a value of this type.
         public static final int share=0x7f06002a;
         public static final int status_bar_notification_info_overflow=0x7f060014;
         public static final int text_to_share=0x7f06002b;
-        public static final int to=0x7f06002c;
+        public static final int thumbsdown=0x7f06002c;
+        public static final int thumbsup=0x7f06002d;
+        public static final int to=0x7f06002e;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f08009b;
