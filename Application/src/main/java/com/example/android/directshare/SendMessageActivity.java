@@ -22,7 +22,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
+import java.util.regex.Matcher;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -75,54 +77,66 @@ public class SendMessageActivity extends Activity {
         protected Void doInBackground(String... params) {
 
             ShareContext shareContext = ShareContext.byId(Integer.valueOf(params[1]));
-            HttpURLConnection httpURLConnection = null;
 
             Log.e("OPENSHARE", "INSIDE ASYNC");
 
             /*
                {
-                  "@context": "https://userfeeds.io/spacification/claim.jsonld",
-                  "issuer": "ethereum:0x1234567890abcdef....123",
-                  "issued": "2016-06-21T03:40:19Z",
-                  "type": ["???"]
-                  "claim": {
-                    "id": "ethereum:0x1234567.........89",
-                    "statements": ["positive"],
-                  }
-                  "signature": {
-                    "type": "EthereumSignature.1",
-                    "created": "2016-06-21T03:40:19Z",
-                    "creator": "ethereum:0x1234567890abcdef....123",
-                    "domain": "wallet.com",
-                    "nonce": "783b4dfa",
-                    "signatureValue": "Rxj7Kb/tDbGHFAs6ddHjVLsHDiNyYzxs2MPmNG8G47oS06N8i0Dis5mUePIzII4+p/ewcOTjvH7aJxnKEePCO9IrlqaHnO1TfmTut2rvXxE5JNzur0qoNq2yXl+TqUWmDXoHZF+jQ7gCsmYqTWhhsG5ufo9oyqDMzPoCb9ibsNk="
-                  }
-               }
+                    "context" : "ethereum",
+                    "issued" : "2016-06-21T03:40:19Z",
+                    "type" : [
+                        "Claim",
+                        "Backing"
+                    ],
+                    "claim" : {
+                        "target" : "alamakota",
+                        "amount" : 13
+                    },
+                    "signature" : {
+                        "type" : "EthereumSignature.1",
+                        "created" : "2016-06-21T03:40:19Z",
+                        "creator" : "0xfE02a56127aFfBba940bB116Fa30A3Af10d12f80",
+                        "domain" : "ethereum",
+                        "nonce" : "783b4dfa",
+                        "signatureValue" : "Rxj7Kb/tDbGHFAs6ddHjVLsHDiNyYzxs2MPmNG8G47oS06N8i0Dis5mUePIzII4+p/ewcOTjvH7aJxnKEePCO9IrlqaHnO1TfmTut2rvXxE5JNzur0qoNq2yXl+TqUWmDXoHZF+jQ7gCsmYqTWhhsG5ufo9oyqDMzPoCb9ibsNk="
+                    }
+                }
             */
 
-
             JSONObject body = new JSONObject();
-            JSONObject claim = new JSONObject();
-            JSONObject signature = new JSONObject();
+
+            Log.e("A", params[0]);
+
+            String target;
+
+            Matcher m = Patterns.WEB_URL.matcher(params[0]);
+            if (m.find()) {
+                target = m.group();
+            } else {
+                target = "text:base64:" + Base64.encodeToString(params[0].getBytes(), Base64.DEFAULT);
+            }
 
             try {
-                claim.put("id", shareContext.getIdentifier());
-                claim.put("url", params[0]);
-                claim.put("text", params[0]);
-                claim.put("type", params[3]);
+                JSONArray labels = new JSONArray();
+                labels.put(params[3]);
 
+                JSONObject claim = new JSONObject();
+                claim.put("target", target);
+                claim.put("labels", labels);
+
+                JSONObject signature = new JSONObject();
                 signature.put("created", System.currentTimeMillis());
-                signature.put("creator", "OpenShare");
+                signature.put("creator", params[2]);
                 signature.put("type", shareContext.getSignatureType());
                 signature.put("domain", shareContext.getDomain());
                 signature.put("nonce", "???");
                 signature.put("signatureValue", "");
 
                 JSONArray types = new JSONArray();
-                types.put("Share");
+                types.put("Claim");
+                types.put("Labels");
 
-                body.put("@context", "https://specs.userfeeds.io/claims/schema.jsonld");
-                body.put("issuer", params[2]);
+                body.put("context", shareContext.getIdentifier());
                 body.put("issued", System.currentTimeMillis());
                 body.put("type", types);
                 body.put("claim", claim);
@@ -132,7 +146,7 @@ public class SendMessageActivity extends Activity {
             }
 
             try {
-                post("http://beta.userfeeds.io/", body.toString());
+                post("http://10.0.2.2:80/", body.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
