@@ -1,7 +1,0 @@
-#Wed Feb 01 15:04:34 CET 2017
-base.0=/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d412fc674e6d0828a8893bfd8f212ebf3cc8fae7
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_569255a048bca86abcca131c3c0df0294288ebe9/classes.dex
-base.1=/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_569255a048bca86abcca131c3c0df0294288ebe9
-file.0=/home/grzegorz/Workspace/Android/Android-ShareApp/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d412fc674e6d0828a8893bfd8f212ebf3cc8fae7/classes.dex
