@@ -69,7 +69,7 @@ public class SendMessageActivity extends Activity {
 
     class SendClaim extends AsyncTask<String, Void, Void> {
 
-        public final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
         OkHttpClient client = new OkHttpClient();
 
@@ -110,6 +110,7 @@ public class SendMessageActivity extends Activity {
             String target;
 
             Matcher m = Patterns.WEB_URL.matcher(params[0]);
+
             if (m.find()) {
                 target = m.group();
             } else {
@@ -188,7 +189,7 @@ public class SendMessageActivity extends Activity {
         // The contact ID will not be passed on when the user clicks on the app icon rather than any
         // of the Direct Share icons. In this case, we show another dialog for selecting a contact.
         if (mContextId == ShareContext.INVALID_ID) {
-            selectContact();
+            selectContext();
         }
     }
 
@@ -240,9 +241,9 @@ public class SendMessageActivity extends Activity {
     }
 
     /**
-     * Delegates selection of a {@Contact} to {@link SelectShareContextActivity}.
+     * Delegates selection of a {@Context} to {@link SelectShareContextActivity}.
      */
-    private void selectContact() {
+    private void selectContext() {
         Intent intent = new Intent(this, SelectShareContextActivity.class);
         intent.setAction(SelectShareContextActivity.ACTION_SELECT_CONTACT);
         startActivityForResult(intent, REQUEST_SELECT_CONTACT);
@@ -257,7 +258,7 @@ public class SendMessageActivity extends Activity {
                 send("thumbsdown");
                 break;
         }
-    };
+    }
 
     /**
      * Pretends to send the text to the contact. This only shows a dummy message.
