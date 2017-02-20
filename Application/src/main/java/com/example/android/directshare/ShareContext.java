@@ -29,18 +29,18 @@ public class ShareContext {
      */
     public static final ShareContext[] SHARE_CONTEXTS = {
             new ShareContext("Ethereum", "ethereum", "ethereum"),
-            new ShareContext("Unicorn", "ethereum:unicorn", "ethereum:0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7"),
+            new ShareContext("Unicorn", "ethereum", "ethereum:0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7"),
             new ShareContext("EthereumClassic", "ethereumclassic", "ethereumclassic"),
-            new ShareContext("Digix DGD", "ethereum:digixdgd", "ethereum:0xe0b7927c4af23765cb51314a0e0521a9645f0e2a"),
-            new ShareContext("FirstBlood", "ethereum:firstblood", "ethereum:0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7"),
-            new ShareContext("Golem", "ethereum:golem", "ethereum:0xa74476443119A942dE498590Fe1f2454d7D4aC0d"),
-            new ShareContext("HackerGold", "ethereum:hackergold", "ethereum:0x14f37b574242d366558db61f3335289a5035c506"),
-            new ShareContext("ICONOMI", "ethereum:iconomi", "ethereum:0x888666CA69E0f178DED6D75b5726Cee99A87D698"),
-            new ShareContext("Maker", "ethereum:maker", "ethereum:0xc66ea802717bfb9833400264dd12c2bceaa34a6d"),
-            new ShareContext("Pluton", "ethereum:pluton", "ethereum:0xD8912C10681D8B21Fd3742244f44658dBA12264E"),
-            new ShareContext("Augur", "ethereum:augur", "ethereum:0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5"),
-            new ShareContext("SingularDTV", "ethereum:singulardtv", "ethereum:0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009"),
-            new ShareContext("vDice", "ethereum:vdice", "ethereum:0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170"),
+            new ShareContext("Digix DGD", "ethereum", "ethereum:0xe0b7927c4af23765cb51314a0e0521a9645f0e2a"),
+            new ShareContext("FirstBlood", "ethereum", "ethereum:0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7"),
+            new ShareContext("Golem", "ethereum", "ethereum:0xa74476443119A942dE498590Fe1f2454d7D4aC0d"),
+            new ShareContext("HackerGold", "ethereum", "ethereum:0x14f37b574242d366558db61f3335289a5035c506"),
+            new ShareContext("ICONOMI", "ethereum", "ethereum:0x888666CA69E0f178DED6D75b5726Cee99A87D698"),
+            new ShareContext("Maker", "ethereum", "ethereum:0xc66ea802717bfb9833400264dd12c2bceaa34a6d"),
+            new ShareContext("Pluton", "ethereum", "ethereum:0xD8912C10681D8B21Fd3742244f44658dBA12264E"),
+            new ShareContext("Augur", "ethereum", "ethereum:0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5"),
+            new ShareContext("SingularDTV", "ethereum", "ethereum:0xaec2e87e0a235266d9c5adc9deb4b2e29b54d009"),
+            new ShareContext("vDice", "ethereum", "ethereum:0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170"),
     };
 
     /**
