@@ -31,7 +31,7 @@ public class ShareContext {
             new ShareContext("Ethereum", "ethereum", "ethereum"),
             new ShareContext("Unicorn", "ethereum", "ethereum:0x89205A3A3b2A69De6Dbf7f01ED13B2108B2c43e7"),
             new ShareContext("EthereumClassic", "ethereumclassic", "ethereumclassic"),
-            new ShareContext("Digix DGD", "ethereum", "ethereum:0xe0b7927c4af23765cb51314a0e0521a9645f0e2a"),
+            new ShareContext("DigixDGD", "ethereum", "ethereum:0xe0b7927c4af23765cb51314a0e0521a9645f0e2a"),
             new ShareContext("FirstBlood", "ethereum", "ethereum:0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7"),
             new ShareContext("Golem", "ethereum", "ethereum:0xa74476443119A942dE498590Fe1f2454d7D4aC0d"),
             new ShareContext("HackerGold", "ethereum", "ethereum:0x14f37b574242d366558db61f3335289a5035c506"),

@@ -17,8 +17,12 @@
 package com.example.android.directshare;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -26,6 +30,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,9 +38,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
 import java.util.regex.Matcher;
 
+import io.ipfs.api.IPFS;
+import io.ipfs.api.JSONParser;
+import io.ipfs.api.MerkleNode;
+import io.ipfs.api.NamedStreamable;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -57,6 +70,7 @@ public class SendMessageActivity extends Activity {
      * The text to share.
      */
     private String mBody;
+    private Uri mImage;
 
     /**
      * The ID of the context to share the text with.
@@ -66,6 +80,67 @@ public class SendMessageActivity extends Activity {
     // View references.
     private TextView mTextContactName;
     private TextView mTextMessageBody;
+
+    public class Wrapper
+    {
+        public Object result;
+        public Object[] params;
+    }
+
+    class SendImage extends AsyncTask<Object, Void, Wrapper> {
+
+
+        @Override
+        protected Wrapper doInBackground(Object... params) {
+            Log.e("OPENSHARE", "INSIDE IMAGE ASYNC");
+
+            IPFS ipfs = new IPFS("beta.userfeeds.io", 5001);
+            NamedStreamable.ByteArrayWrapper file = new NamedStreamable.ByteArrayWrapper("image", convertImageToByte((Uri) params[0]));
+            Wrapper w = new Wrapper();
+
+            try {
+                MerkleNode addResult = ipfs.add(file);
+                Log.e("OPENSHARE", addResult.toJSONString());
+                w.result = addResult.toJSON();
+                w.params = params;
+                return w;
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.e("SHARE", "SEND_IMAGE", e);
+            }
+
+            Log.e("OPENSHARE", "INSIDE IMAGE ASYNC");
+            return null;
+        }
+
+        public byte[] convertImageToByte(Uri uri){
+            byte[] data = null;
+            try {
+                ContentResolver cr = getBaseContext().getContentResolver();
+                InputStream inputStream = cr.openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                data = baos.toByteArray();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(Wrapper w) {
+
+            super.onPostExecute(w);
+
+            Map result = (Map) w.result;
+
+            Log.e("AAAA", JSONParser.toString(w.result));
+
+            SendClaim sendClaim = new SendClaim();
+            sendClaim.execute("ipfs:" + result.get("Hash").toString(), (String) w.params[1], (String) w.params[2], (String) w.params[3], (String) w.params[4]);
+        }
+    }
 
     class SendClaim extends AsyncTask<String, Void, Void> {
 
@@ -147,7 +222,7 @@ public class SendMessageActivity extends Activity {
             }
 
             try {
-                post("http://10.0.2.2:80/", body.toString());
+                post("https://beta.userfeeds.io:443/", body.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -220,13 +295,29 @@ public class SendMessageActivity extends Activity {
      * @return True if the {@code intent} is resolved properly.
      */
     private boolean resolveIntent(Intent intent) {
-        if (Intent.ACTION_SEND.equals(intent.getAction()) &&
-                "text/plain".equals(intent.getType())) {
-            mBody = intent.getStringExtra(Intent.EXTRA_TEXT);
-            mContextId = intent.getIntExtra(ShareContext.ID, ShareContext.INVALID_ID);
+
+        String action = intent.getAction();
+        String type = intent.getType();
+
+        mContextId = intent.getIntExtra(ShareContext.ID, ShareContext.INVALID_ID);
+
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if ("text/plain".equals(type)) {
+                handleSendText(intent); // Handle text being sent
+            } else if (type.startsWith("image/")) {
+                handleSendImage(intent); // Handle single image being sent
+            }
             return true;
         }
         return false;
+    }
+
+    void handleSendText(Intent intent) {
+        mBody = intent.getStringExtra(Intent.EXTRA_TEXT);
+    }
+
+    void handleSendImage(Intent intent) {
+        mImage = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
     }
 
     /**
@@ -250,12 +341,14 @@ public class SendMessageActivity extends Activity {
     }
 
     public void onSendClick(View view) {
+        EditText titleEdit = (EditText) findViewById(R.id.claimTitle);
+        String title = titleEdit.getText().toString();
         switch (view.getId()) {
             case R.id.thumbsup:
-                send("thumbsup");
+                send(title, "thumbsup");
                 break;
             case R.id.thumbsdown:
-                send("thumbsdown");
+                send(title, "thumbsdown");
                 break;
         }
     }
@@ -263,16 +356,24 @@ public class SendMessageActivity extends Activity {
     /**
      * Pretends to send the text to the contact. This only shows a dummy message.
      */
-    private void send(String type) {
+    private void send(String title, String label) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         final String profile = prefs.getString("selectedProfile", "error");
-        final String claimType = type;
+        final String claimTitle = title;
+        final String claimLabel = label;
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                SendClaim sendClaim = new SendClaim();
-                sendClaim.execute(mBody, String.valueOf(mContextId), profile, claimType);
+                if (mImage != null) {
+                    Log.e("NEW TASK", "IMAGE TASK");
+                    SendImage sendImage = new SendImage();
+                    sendImage.execute(mImage, String.valueOf(mContextId), profile, claimTitle, claimLabel);
+                } else {
+                    Log.e("NEW TASK", "TEXT TASK");
+                    SendClaim sendClaim = new SendClaim();
+                    sendClaim.execute(mBody, String.valueOf(mContextId), profile, claimTitle, claimLabel);
+                }
             }
         });
 
