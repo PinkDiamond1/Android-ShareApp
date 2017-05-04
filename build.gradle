@@ -1,11 +1,13 @@
+buildscript {
+    ext.versions_plugin_version = '0.14.0'
 
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.github.ben-manes:gradle-versions-plugin:$versions_plugin_version"
+    }
+}
 
-
-
-
-
-
-
-
-
-
+apply plugin: 'com.github.ben-manes.versions'
